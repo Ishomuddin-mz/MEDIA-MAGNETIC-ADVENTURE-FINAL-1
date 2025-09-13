@@ -420,16 +420,20 @@
   <link rel="stylesheet" href="html5/data/css/output.min.css" data-noprefix/>
 </body>
 <script src="html5/lib/scripts/bootstrapper.min.js"></script>
-<audio src="musik.mp3" id="bgSong" loop muted></audio>
+<audio id="bgSong" loop></audio>
 <script>
   window.playBgSong = function() {
     var bgSong = document.getElementById("bgSong");
     if (bgSong) {
+      // set source baru saat dipanggil
+      if (!bgSong.src) {
+        bgSong.src = "musik.mp3";
+      }
       bgSong.currentTime = 0;   // mulai dari awal
-      bgSong.volume = 0.5;
-      bgSong.muted = false;     // buka mute saat tombol MASUK diklik
+      bgSong.volume = 0.2;
       bgSong.play().catch(err => console.log("Autoplay dicegah:", err));
     }
   };
 </script>
 </html>
+
